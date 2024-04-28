@@ -21,7 +21,7 @@ For testing, the application is accessible at [http://194.53.54.26:8001/surveys]
 1. **Clone the repository**:
     ```
     git clone https://github.com/huongchik/Django-Survey-Application.git
-    cd survey-app
+    cd Django-Survey-Application
     ```
 
 2. **Install dependencies**:
