@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/styles_login.css' %}">
+    <title>Login</title>
+</head>
+<body>
+    {% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            <p>
+                {{ field.label_tag }}
+                {{ field }}
+                {% if field.errors %}
+                    <div class="error-message">
+                        {{ field.errors|striptags }}
+                    </div>
+                {% endif %}
+            </p>
+        {% endfor %}
+        <button type="submit">Login</button>
+    </form>
+    <p>Don’t have an account? <a href="{% url 'surveys:register' %}">Register here</a></p>
+    {% if form.non_field_errors %}
+        <div class="error-message">{{ form.non_field_errors|striptags }}</div>
+    {% endif %}
+    {% endblock %}
+</body>
+</html>

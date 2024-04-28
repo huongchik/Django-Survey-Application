@@ -1,0 +1,31 @@
+<h1>{{ survey.title }}</h1>
+<form method="post">
+    {% csrf_token %}
+    {% for question in survey.questions.all %}
+    <div class="question" id="question_{{ question.id }}"
+        data-dependent-on="{{ question.dependent_on_id|default_if_none:'' }}"
+        data-required-answers="{% for answer in question.required_answers.all %}{{ answer.text|safe }}{% if not forloop.last %},{% endif %}{% endfor %}"
+        data-required="{{ question.is_required }}">
+        <p>{{ question.text }}{% if question.is_required %}<span style="color: red;">*</span>{% endif %}</p>
+        {% if question.question_type == 'text' %}
+        <input type="text" name="{{ question.id }}" placeholder="Your answer here">
+        {% elif question.question_type == 'choice' %}
+        {% for answer in question.answers.all %}
+        <input type="radio" name="{{ question.id }}" value="{{ answer.text }}">{{ answer.text }}
+        <br>
+        {% endfor %}
+        {% elif question.question_type == 'multiple' %}
+        {% for answer in question.answers.all %}
+        <input type="checkbox" name="{{ question.id }}[]" value="{{ answer.text }}">{{ answer.text }}
+        <br>
+        {% endfor %}
+        {% endif %}
+        <div class="error-message" style="color: red; display: none;">Этот вопрос является обязательным</div>
+    </div>
+    {% endfor %}
+    <button type="submit">Submit</button>
+</form>
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+<script src="{% static 'js/question_tree.js' %}"></script>
