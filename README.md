@@ -85,7 +85,7 @@ Access the admin interface at `http://127.0.0.1:8000/admin`. Use the credentials
 
 ### Participating in Surveys
 
-- Access surveys at the designated URL provided by the server.
+- Access surveys at the designated URL provided by the server (`http://127.0.0.1:8000/surveys`).
 - **User Registration and Login**: Before participating, users must register and log in through the user interface.
 - **Survey Participation**: Participants can choose a survey, view questions, and submit their responses based on the question format and dependencies.
 
