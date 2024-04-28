@@ -4,6 +4,10 @@ services:
   web:
     build: .
     command: python manage.py runserver 0.0.0.0:8000
+    environment:
+      - DJANGO_SUPERUSER_PASSWORD=adminpass
+      - DJANGO_SUPERUSER_USERNAME=admin
+      - DJANGO_SUPERUSER_EMAIL=admin@example.com
     volumes:
       - .:/app
     ports:

@@ -29,17 +29,22 @@ For testing, the application is accessible at [http://194.53.54.26:8001/surveys]
     pip install -r requirements.txt
     ```
 
-3. **Migrate the database**:
+3. **Make migrations**:
+    ```
+    python manage.py makemigrations
+    ```
+
+4. **Migrate the database**:
     ```
     python manage.py migrate
     ```
 
-4. **Create an admin user**:
+5. **Create an admin user**:
     ```
     python manage.py createsuperuser
     ```
 
-5. **Run the server**:
+6. **Run the server**:
     ```
     python manage.py runserver
     ```
@@ -57,6 +62,16 @@ For testing, the application is accessible at [http://194.53.54.26:8001/surveys]
     ```
 
 This will set up the necessary services and start the development server accessible via the configured port.
+
+### Admin Access via Docker
+
+Upon setting up the project, the Django admin panel is accessible. To access the admin panel, use the following credentials:
+
+- **Username:** admin
+- **Password:** adminpass
+
+It's strongly recommended to change these default credentials immediately after your first login to ensure that your application remains secure. To change the admin credentials, navigate to the Django admin panel and update the user information accordingly.
+
 
 ## Usage
 
